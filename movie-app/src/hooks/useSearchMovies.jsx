@@ -1,14 +1,13 @@
 import { useState } from 'react';
 
-const useSearchMovies = (initial) => {
+const useSearchMovies = () => {
   const [searchLoading, setSearchLoading] = useState(false);
-  const [movieList, setMovieList] = useState(initial);
+  const [movieList, setMovieList] = useState();
   const [error, setError] = useState(null);
   const [keyword, setKeyword] = useState('');
 
   const handleSearch = async (e) => {
     e.preventDefault();
-
     setSearchLoading(true);
     try {
       const {

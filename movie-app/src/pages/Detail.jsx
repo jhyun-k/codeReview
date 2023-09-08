@@ -1,6 +1,6 @@
-import { useLocation } from "react-router-dom";
-import styles from "styles/Detail.module.css";
-import useFavoriteMovies from "hooks/useFavoriteMovies";
+import { useLocation } from 'react-router-dom';
+import styles from 'styles/Detail.module.css';
+import useFavoriteMovies from 'hooks/useFavoriteMovies';
 
 const Detail = () => {
   const { state } = useLocation();
@@ -15,20 +15,22 @@ const Detail = () => {
           width="263"
           height="390"
           onError={(e) => {
-            e.target.src = "https://via.placeholder.com/290x345";
+            e.target.src = 'https://via.placeholder.com/290x345';
           }}
         />
+        <button
+          className={styles.favBtn}
+          onClick={isLike ? () => removeFavorite(id) : () => addFavorite(state)}
+        >
+          {isLike ? '❤️' : '🤍'} Favorite
+        </button>
       </div>
+
       <div className={styles.detailItem}>
         <div className={styles.title}>{title}</div>
         <div>⭐ {rating}</div>
         <div>{genres[0]}</div>
         <div>{summary}</div>
-        <button
-          onClick={isLike ? () => removeFavorite(id) : () => addFavorite(state)}
-        >
-          {isLike ? "❤️" : "🤍"} Favorite
-        </button>
       </div>
     </div>
   );

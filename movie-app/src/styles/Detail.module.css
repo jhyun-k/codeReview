@@ -4,6 +4,10 @@
   line-height: 40px;
 }
 
+.favBtn {
+  width: 100%;
+}
+
 .movieDetail {
   width: 1000px;
   min-height: 100vh;

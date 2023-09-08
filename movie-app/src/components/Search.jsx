@@ -8,6 +8,7 @@ const SearchBar = ({ handleSearch, handleInput }) => {
         className={styles.searchInput}
         type="text"
         onChange={handleInput}
+        placeholder="영문만 입력가능합니다"
       />
       <input className={styles.searchBtn} type="submit" value="검색" />
     </form>

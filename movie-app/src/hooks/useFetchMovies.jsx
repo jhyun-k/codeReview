@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-const useFetchMovies = () => {
+const useFetchMovies = (url) => {
   const [isLoading, setIsLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
@@ -24,7 +24,7 @@ const useFetchMovies = () => {
     })();
   }, []);
 
-  return { movies, error, isLoading };
+  return { movies, setMovies, error, isLoading };
 };
 
 export default useFetchMovies;

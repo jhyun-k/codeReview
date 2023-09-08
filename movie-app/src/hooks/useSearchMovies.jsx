@@ -1,25 +1,25 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-const useSearchMovies = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [movies, setMovies] = useState([]);
+const useSearchMovies = (initial) => {
+  const [searchLoading, setSearchLoading] = useState(false);
+  const [movieList, setMovieList] = useState(initial);
   const [error, setError] = useState(null);
-  const [keyword, setKeyword] = useState("");
+  const [keyword, setKeyword] = useState('');
 
   const handleSearch = async (e) => {
     e.preventDefault();
 
-    setIsLoading(true);
+    setSearchLoading(true);
     try {
-      const res = await fetch(
-        `https://yts.mx/api/v2/list_movies.json?query_term=${keyword}`
-      );
-      console.log(res);
       const {
         data: { movies },
-      } = await res.json();
-      setIsLoading(false);
-      setMovies(movies);
+      } = await (
+        await fetch(
+          `https://yts.mx/api/v2/list_movies.json?query_term=${keyword}&sort_by=like_count`
+        )
+      ).json();
+      setMovieList(movies);
+      setSearchLoading(false);
     } catch (err) {
       setError(err);
       console.log(err);
@@ -30,7 +30,14 @@ const useSearchMovies = () => {
     setKeyword(e.target.value);
   };
 
-  return { handleSearch, handleInput, isLoading, movies, error };
+  return {
+    handleSearch,
+    handleInput,
+    searchLoading,
+    movieList,
+    setMovieList,
+    error,
+  };
 };
 
 export default useSearchMovies;

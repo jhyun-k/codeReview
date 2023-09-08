@@ -1,0 +1,28 @@
+.searchBar {
+  position: absolute;
+  right: 4rem;
+  top: 100px;
+}
+
+.searchInput {
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  border-bottom: 2px solid #fff;
+  outline: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding-bottom: 7px;
+}
+
+.searchBtn {
+  border: 3px solid #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px;
+  background-color: transparent;
+  color: #fff;
+  margin-left: 10px;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
